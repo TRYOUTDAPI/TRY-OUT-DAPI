@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Try Out Untuk Dapii</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="toast"></div>
+
+<!-- ================= LOGIN ================= -->
+
+<section id="loginPage" class="login-page">
+
+  <div class="login-orb orb-one"></div>
+  <div class="login-orb orb-two"></div>
+
+  <div class="login-card glass">
+
+    <div class="logo">
+      <span>TO</span>
+    </div>
+
+    <p class="mini-label">TRY OUT PLATFORM</p>
+
+    <h1>
+      Try Out Untuk
+      <span>Dapii.</span>
+    </h1>
+
+    <p class="login-description">
+      Latihan. Uji kemampuan. Pantau perkembangan.
+      Semua hasil belajarmu tersimpan di satu tempat.
+    </p>
+
+    <button id="googleLoginBtn" class="google-button">
+      <span class="google-icon">G</span>
+      Masuk dengan Google
+    </button>
+
+    <button id="demoLoginBtn" class="demo-button">
+      Masuk sebagai Dapii
+    </button>
+
+    <p class="login-note">
+      Mode demo dapat digunakan untuk mencoba seluruh fitur website.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- ================= APP ================= -->
+
+<div id="app" class="hidden">
+
+  <!-- HEADER -->
+
+  <header class="header">
+
+    <button class="brand-button" onclick="navigate('dashboard')">
+
+      <div class="brand-logo">
+        TO
+      </div>
+
+      <div>
+        <strong>Try Out Untuk Dapii</strong>
+        <small>Learning Platform</small>
+      </div>
+
+    </button>
+
+
+    <div class="header-right">
+
+      <div class="user-profile">
+
+        <div id="userAvatar" class="avatar">
+          D
+        </div>
+
+        <div class="user-text">
+          <strong id="userName">Dapii</strong>
+          <small id="userEmail">dapii@example.com</small>
+        </div>
+
+      </div>
+
+      <button
+        class="logout-button"
+        onclick="logout()">
+        Keluar
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- LAYOUT -->
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar glass-soft">
+
+      <nav>
+
+        <button class="nav-item active"
+          data-page="dashboard"
+          onclick="navigate('dashboard')">
+
+          <span>⌂</span>
+          Dashboard
+
+        </button>
+
+        <button class="nav-item"
+          data-page="tryout"
+          onclick="navigate('tryout')">
+
+          <span>▣</span>
+          Try Out SMP
+
+        </button>
+
+        <button class="nav-item"
+          data-page="olympiad"
+          onclick="navigate('olympiad')">
+
+          <span>♛</span>
+          Olimpiade
+
+        </button>
+
+        <button class="nav-item"
+          data-page="history"
+          onclick="navigate('history')">
+
+          <span>◷</span>
+          Riwayat
+
+        </button>
+
+        <button class="nav-item"
+          data-page="certificates"
+          onclick="navigate('certificates')">
+
+          <span>▱</span>
+          Sertifikat
+
+        </button>
+
+        <button class="nav-item"
+          data-page="medals"
+          onclick="navigate('medals')">
+
+          <span>✦</span>
+          Medali
+
+        </button>
+
+        <button class="nav-item"
+          data-page="profile"
+          onclick="navigate('profile')">
+
+          <span>●</span>
+          Profil
+
+        </button>
+
+      </nav>
+
+      <div class="sidebar-footer">
+
+        <div class="status-dot"></div>
+
+        <div>
+          <strong>System Online</strong>
+          <small>Data tersimpan</small>
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- CONTENT -->
+
+    <main id="mainContent"></main>
+
+  </div>
+
+</div>
+
+
+<!-- MODAL -->
+
+<div id="modal" class="modal hidden"></div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
