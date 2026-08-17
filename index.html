@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Try Out Untuk Dapii</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Firebase -->
+  <script type="module" src="app.js"></script>
+</head>
+
+<body>
+
+  <!-- ================= LOGIN ================= -->
+  <section id="loginPage" class="login-page">
+
+    <div class="login-card">
+
+      <div class="brand-logo">T<span>O</span>D</div>
+
+      <h1>Try Out Untuk Dapii</h1>
+
+      <p>
+        platform try out, latihan soal, dan simulasi olimpiade
+        untuk pelajar SMP.
+      </p>
+
+      <button id="googleLoginBtn" class="google-btn">
+        <span>G</span>
+        Login dengan Google
+      </button>
+
+      <small>
+        Login untuk menyimpan progress, nilai, riwayat,
+        dan sertifikat kamu.
+      </small>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= APP ================= -->
+
+  <section id="appPage" class="hidden">
+
+    <header class="navbar">
+
+      <div class="logo">
+        TRY OUT <span>UNTUK DAPII</span>
+      </div>
+
+      <div class="profile">
+
+        <img id="userPhoto" src="" alt="Foto">
+
+        <div>
+          <strong id="userName">Dapii</strong>
+          <small id="userEmail"></small>
+        </div>
+
+        <button id="logoutBtn">Logout</button>
+
+      </div>
+
+    </header>
+
+
+    <main>
+
+      <!-- ================= DASHBOARD ================= -->
+
+      <section id="dashboardPage">
+
+        <div class="welcome">
+
+          <div>
+            <span>Selamat datang kembali 👋</span>
+
+            <h1>
+              Halo, <span id="dashboardName">Dapii</span>
+            </h1>
+
+            <p>
+              lanjutkan belajar dan tingkatkan performamu.
+            </p>
+          </div>
+
+        </div>
+
+
+        <!-- STATISTIK -->
+
+        <div class="stats-grid">
+
+          <div class="stat-card">
+            <span>Try Out Selesai</span>
+            <strong id="completedCount">0</strong>
+          </div>
+
+          <div class="stat-card">
+            <span>Rata-rata Nilai</span>
+            <strong id="averageScore">0</strong>
+          </div>
+
+          <div class="stat-card">
+            <span>Nilai Tertinggi</span>
+            <strong id="bestScore">0</strong>
+          </div>
+
+          <div class="stat-card">
+            <span>Sertifikat</span>
+            <strong id="certificateCount">0</strong>
+          </div>
+
+        </div>
+
+
+        <!-- UJIAN BELUM SELESAI -->
+
+        <div id="continueSection" class="section">
+
+          <h2>📝 Lanjutkan Ujian</h2>
+
+          <div id="unfinishedList"></div>
+
+        </div>
+
+
+        <!-- MENU -->
+
+        <div class="section">
+
+          <h2>Mulai Belajar</h2>
+
+          <div class="menu-grid">
+
+            <button class="menu-card" onclick="openExamList()">
+              <div>📝</div>
+              <h3>Try Out SMP</h3>
+              <p>
+                Latihan berbagai pelajaran kelas 8 semester 1.
+              </p>
+            </button>
+
+            <button class="menu-card" onclick="openOlympiad()">
+              <div>🏆</div>
+              <h3>Simulasi Olimpiade</h3>
+              <p>
+                Uji kemampuan dengan soal olimpiade.
+              </p>
+            </button>
+
+            <button class="menu-card" onclick="openHistory()">
+              <div>📜</div>
+              <h3>Riwayat</h3>
+              <p>
+                Lihat semua ujian yang pernah dikerjakan.
+              </p>
+            </button>
+
+            <button class="menu-card" onclick="openCertificates()">
+              <div>🎓</div>
+              <h3>Sertifikat</h3>
+              <p>
+                Lihat sertifikat hasil try out.
+              </p>
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- REKOMENDASI -->
+
+        <div class="section">
+
+          <h2>🧠 Yang Perlu Kamu Pelajari</h2>
+
+          <div id="recommendationBox" class="recommendation">
+            Belum cukup data untuk memberikan rekomendasi.
+            Kerjakan beberapa try out terlebih dahulu.
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= EXAM LIST ================= -->
+
+      <section id="examListPage" class="sub-page hidden">
+
+        <button onclick="backDashboard()" class="back-btn">
+          ← Dashboard
+        </button>
+
+        <h1>Try Out Kelas 8 SMP</h1>
+
+        <p>
+          Semester 1 • berbagai mata pelajaran
+        </p>
+
+        <div class="exam-grid">
+
+          <div class="exam-card">
+            <span>📐</span>
+            <h2>Matematika</h2>
+            <p>20 soal • 30 menit</p>
+            <button onclick="startExam('math')">
+              Mulai
+            </button>
+          </div>
+
+          <div class="exam-card">
+            <span>🇮🇩</span>
+            <h2>Bahasa Indonesia</h2>
+            <p>20 soal • 30 menit</p>
+            <button onclick="startExam('indo')">
+              Mulai
+            </button>
+          </div>
+
+          <div class="exam-card">
+            <span>🇬🇧</span>
+            <h2>Bahasa Inggris</h2>
+            <p>20 soal • 30 menit</p>
+            <button onclick="startExam('english')">
+              Mulai
+            </button>
+          </div>
+
+          <div class="exam-card">
+            <span>🔬</span>
+            <h2>IPA</h2>
+            <p>20 soal • 30 menit</p>
+            <button onclick="startExam('science')">
+              Mulai
+            </button>
+          </div>
+
+          <div class="exam-card">
+            <span>🌏</span>
+            <h2>IPS</h2>
+            <p>20 soal • 30 menit</p>
+            <button onclick="startExam('social')">
+              Mulai
+            </button>
+          </div>
+
+          <div class="exam-card">
+            <span>🏛️</span>
+            <h2>PPKn</h2>
+            <p>20 soal • 30 menit</p>
+            <button onclick="startExam('civics')">
+              Mulai
+            </button>
+          </div>
+
+          <div class="exam-card">
+            <span>💻</span>
+            <h2>Informatika</h2>
+            <p>20 soal • 30 menit</p>
+            <button onclick="startExam('informatics')">
+              Mulai
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= EXAM ================= -->
+
+      <section id="examPage" class="exam-page hidden">
+
+        <div class="exam-header">
+
+          <div>
+            <span id="examSubject">Matematika</span>
+            <h2 id="examTitle">Try Out</h2>
+          </div>
+
+          <div class="timer" id="timer">
+            30:00
+          </div>
+
+        </div>
+
+
+        <div class="exam-layout">
+
+          <aside class="question-numbers">
+
+            <h3>Nomor Soal</h3>
+
+            <div id="questionNumbers"></div>
+
+          </aside>
+
+
+          <div class="question-area">
+
+            <div class="question-progress">
+              <div id="progressBar"></div>
+            </div>
+
+            <div id="questionContainer"></div>
+
+            <div class="exam-navigation">
+
+              <button onclick="previousQuestion()">
+                ← Sebelumnya
+              </button>
+
+              <button onclick="nextQuestion()" id="nextQuestionBtn">
+                Selanjutnya →
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= RESULT ================= -->
+
+      <section id="resultPage" class="result-page hidden">
+
+        <div class="result-card">
+
+          <div class="result-icon">
+            🏆
+          </div>
+
+          <h1>Try Out Selesai!</h1>
+
+          <p id="resultExamName"></p>
+
+          <div class="result-score">
+            <strong id="resultScore">0</strong>
+            <span>/100</span>
+          </div>
+
+          <p id="resultDescription"></p>
+
+          <div class="result-buttons">
+
+            <button onclick="showDashboard()">
+              Kembali ke Dashboard
+            </button>
+
+            <button onclick="showCertificate()">
+              🎓 Lihat Sertifikat
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= HISTORY ================= -->
+
+      <section id="historyPage" class="sub-page hidden">
+
+        <button onclick="backDashboard()" class="back-btn">
+          ← Dashboard
+        </button>
+
+        <h1>📜 Riwayat Ujian</h1>
+
+        <div id="historyList"></div>
+
+      </section>
+
+
+      <!-- ================= CERTIFICATES ================= -->
+
+      <section id="certificatePage" class="sub-page hidden">
+
+        <button onclick="backDashboard()" class="back-btn">
+          ← Dashboard
+        </button>
+
+        <h1>🎓 Sertifikat Saya</h1>
+
+        <div id="certificateList"></div>
+
+      </section>
+
+
+      <!-- ================= OLYMPIAD ================= -->
+
+      <section id="olympiadPage" class="sub-page hidden">
+
+        <button onclick="backDashboard()" class="back-btn">
+          ← Dashboard
+        </button>
+
+        <h1>🏆 Simulasi Olimpiade</h1>
+
+        <div class="olympiad-grid">
+
+          <div class="olympiad-card">
+            <span>🧮</span>
+            <h2>Matematika</h2>
+            <p>30 soal • 60 menit</p>
+            <button onclick="startOlympiad('math')">
+              Ikuti
+            </button>
+          </div>
+
+          <div class="olympiad-card">
+            <span>🧬</span>
+            <h2>Biologi</h2>
+            <p>30 soal • 60 menit</p>
+            <button onclick="startOlympiad('biology')">
+              Ikuti
+            </button>
+          </div>
+
+          <div class="olympiad-card">
+            <span>⚛️</span>
+            <h2>Fisika</h2>
+            <p>30 soal • 60 menit</p>
+            <button onclick="startOlympiad('physics')">
+              Ikuti
+            </button>
+          </div>
+
+          <div class="olympiad-card">
+            <span>💻</span>
+            <h2>Informatika</h2>
+            <p>30 soal • 60 menit</p>
+            <button onclick="startOlympiad('informatics')">
+              Ikuti
+            </button>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </section>
+
+</body>
+</html>
